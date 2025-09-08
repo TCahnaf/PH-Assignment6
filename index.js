@@ -13,6 +13,21 @@ const removeHigglight = (id) =>{
 };
 
 
+const loadSpinnerOn = () =>{
+    document.getElementById("spinner").classList.remove("hidden")
+    document.getElementById("cards-container").classList.add("hidden")
+
+}
+
+const loadSpinnerOff = () =>{
+    document.getElementById("spinner").classList.add("hidden")
+    document.getElementById("cards-container").classList.remove("hidden")
+
+}
+
+
+
+
 
 const loadPlantDetails = async(id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/plant/${id}`);
@@ -32,6 +47,7 @@ const loadCategories = async()=> {
 };
 
 const loadPlantCards = async()=>{
+    loadSpinnerOn();
     const res = await fetch("https://openapi.programming-hero.com/api/plants");
     const data = await res.json();
     displayPlantCards(data.plants)
@@ -39,6 +55,7 @@ const loadPlantCards = async()=>{
 }
 
 const loadEachPlantCards = async(id)=>{
+    loadSpinnerOn();
     const res = await fetch(`https://openapi.programming-hero.com/api/category/${id}`);
     const data = await res.json();
     displayPlantCards(data.plants)
@@ -85,9 +102,8 @@ const displayPlantCards = plants => {
 
            `
            allPlantCards.append(plantCard);
-
-    
-    }
+    };
+    loadSpinnerOff();
 
 
         //Add to Cart Feature
