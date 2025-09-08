@@ -97,7 +97,7 @@ const displayPlantCards = plants => {
 
                  const cartContent = captureElementID("cart-content");
                 const totalDiv = document.createElement("div")
-                 cartContent.appendChild(totalDiv);
+                 //cartContent.appendChild(totalDiv);
        
         document.querySelectorAll(".cart-btn").forEach((btn) =>{
            
@@ -132,20 +132,14 @@ const displayPlantCards = plants => {
        totalDiv.innerHTML = `<div class = "flex justify-between items-center">
        <p>Total: </p>
        <p>৳${total}</p>
-       </div>`;
-           
-
+       </div>`;          
      
     }
-
-       
-
+  
             cartDetails.querySelector(".remove-btn").addEventListener('click',()=>{
                 cartDetails.remove();
                 totalPrice();
                 
-           
-
                 })
          cartContent.appendChild(cartDetails)
          totalPrice(); 
