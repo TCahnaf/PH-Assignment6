@@ -97,7 +97,7 @@ const displayPlantCards = plants => {
                 <h2 onclick = "loadPlantDetails(${plant.id})" class  = "font-bold plant-name">${plant.name}</h2>
                 <p>${plant.description}</p>
                 <div class = "flex justify-between items-center">
-                <button class = "bg-[#DCFCE7] rounded-2xl p-2" >${plant.category}</button>
+                <button class = "bg-[#DCFCE7] text-[#15803D] rounded-2xl p-2" >${plant.category}</button>
                 <p class = "plant-price" >৳<span class = "money-value">${plant.price}</span></p>
                 </div>
                 <button class = "cart-btn px-4 py-2 bg-[#15803D] rounded-xl text-center text-white lg:h-[43px]">Add to Cart</button>
@@ -110,9 +110,6 @@ const displayPlantCards = plants => {
 
 
         //Add to Cart Feature
-
-
-       
 
                 const cartContent = captureElementID("cart-content");
                 const totalDiv = document.createElement("div")
