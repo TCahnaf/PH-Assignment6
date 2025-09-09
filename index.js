@@ -71,18 +71,15 @@ const loadEachPlantCards = async(id)=>{
 const displayPlantDetails = plant => {
     detailsModal = captureElementID("modal-for-details");
     detailsModal.innerHTML = `
-    <div>
-    <h1 class = "font-bold text-xl">${plant.name}</h1>
+    <div class = "space-y-2">
+    <h1 class = "font-bold text-2xl">${plant.name}</h1>
     <img class = "h-40 w-full object-cover rounded-t" src= ${plant.image} alt="">
-    <p class = "font-bold text-xl">Category: ${plant.category}</p>
-    <p class = "font-bold text-xl">Price: ${plant.price} </p>
-    <p class = "font-bold text-xl">Description: ${plant.description}</p>
+    <p class = "text-xl"><span class = "font-bold">Category</span>: ${plant.category}</p>
+    <p class = "text-xl"><span class = "font-bold">Price</span>: ৳${plant.price}</p>
+    <p class = "text-xl"><span class = "font-bold">Description</span>: ${plant.description}</p>
    </div>
  `
  captureElementID("details_modal").showModal();
-
-
-
 
 
 }
@@ -97,10 +94,10 @@ const displayPlantCards = plants => {
         plantCard = document.createElement("div")
         plantCard.innerHTML = `<div class  = "bg-white p-4 flex flex-col justify-between h-full rounded-xl shadow-lg space-y-3">
                 <img class = "h-60 w-full object-cover rounded-t" src= ${plant.image} alt="">
-                <h2 class  = "font-bold plant-name">${plant.name}</h2>
+                <h2 onclick = "loadPlantDetails(${plant.id})" class  = "font-bold plant-name">${plant.name}</h2>
                 <p>${plant.description}</p>
                 <div class = "flex justify-between items-center">
-                <button class = "bg-[#DCFCE7] rounded-2xl p-2" onclick = "loadPlantDetails(${plant.id})">${plant.category}</button>
+                <button class = "bg-[#DCFCE7] rounded-2xl p-2" >${plant.category}</button>
                 <p class = "plant-price" >৳<span class = "money-value">${plant.price}</span></p>
                 </div>
                 <button class = "cart-btn px-4 py-2 bg-[#15803D] rounded-xl text-center text-white lg:h-[43px]">Add to Cart</button>
@@ -177,14 +174,14 @@ const displayCategories = (categories)=>{
     const categoryContainer = captureElementID("category-container");
     categoryContainer.innerHTML = "";
     categoryContainer.innerHTML = `<h2 class = "font-bold">Categories</h2>
-    <button onclick = "loadPlantCards()" id = "all-tree-btn " class = "text-left category-btn border-2 bg-green-700 text-white" >All Trees</button>
+    <button onclick = "loadPlantCards()" id = "all-tree-btn " class = "text-left category-btn border-8 border-green-500" >All Trees</button>
     `
     
 
     categories.forEach(category => {
         const categoryButtons = document.createElement("div");
         
-       categoryButtons.innerHTML = `<button id = "btn-ctgr-${category.id}" class = "category-btn whitespace-nowrap  hover:bg-green-300" onclick = "loadEachPlantCards(${category.id})">${category.category_name}</button>`
+       categoryButtons.innerHTML = `<button id = "btn-ctgr-${category.id}" class = "category-btn whitespace-nowrap rounded-lg px-6 py-2  hover:bg-green-500" onclick = "loadEachPlantCards(${category.id})">${category.category_name}</button>`
     
         
         categoryContainer.append(categoryButtons)
